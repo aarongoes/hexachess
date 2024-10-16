@@ -1,0 +1,32 @@
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Models
+@model Hexachess.Models.PlayersInfoViewModel
+
+@inject IViewLocalizer Localizer
+
+<div class="options playerlist" id="Options">
+    <h3>
+        @Localizer["Players"]:
+    </h3>
+    @foreach (var player in Model.Players)
+    {
+        <h4>
+            <a href="/games/@player.name/" style="text-decoration: none !important; color: white;">
+                @player.name
+            </a>
+        </h4>
+        <h5>
+            @Localizer["GameCount"]: @player.gameCount
+        </h5>
+        <h6>
+            @foreach (var mode in player.gameModeCount)
+            {
+                <label>@Localizer["GameMode" + mode.Key] : @Localizer["Hosted"] @mode.Value @Localizer["GameHosted"].</label>
+            }
+        </h6>
+        <label class="tgl-btn" for="cb3">
+        </label>
+    }
+
+</div>
+

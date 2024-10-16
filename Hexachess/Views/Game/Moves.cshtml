@@ -1,0 +1,48 @@
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Models
+@model Hexachess.Models.GameViewModel
+
+@inject IViewLocalizer Localizer
+
+@if (Model != null)
+{
+    <script>
+        gameToken ="@Model.Token";
+        gameMode = "@Model.Mode";
+        player1 = "@Model.FirstPlayer.Name";
+        
+        if ("@Model.FirstPlayer.Name" == "@User.Identity.Name") {
+            player = 1;
+        }
+    </script>
+}
+@if (Model.SecondPlayer != null) {
+    <script>
+        player2 = "@Model.SecondPlayer.Name";
+        if("@Model.SecondPlayer.Name" == "@User.Identity.Name"){
+            player = 2;
+        }
+    </script>
+}
+<p>@Localizer["MoveHistory"]</p>
+<div class="options movelist" id="Options">
+    <h5>@Localizer["MoveCount"]: @Model.MoveCount</h5>
+    <table>
+        @foreach (var move in Model.Moves)
+        {
+            <tr>
+                <td style="width: 150px; vertical-align: unset;">
+                    <h5>
+                        @Localizer["Player"] @move.Player
+                    </h5>
+                </td>
+                <td>
+                    <label class="tgl-btn" for="cb3">
+                        @move.OldX@move.OldY => @move.NewX@move.NewY
+                    </label>
+                </td>
+            </tr>
+        }
+    </table>
+
+</div>

@@ -1,0 +1,49 @@
+﻿@using Microsoft.AspNetCore.Http
+<!DOCTYPE html>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+     <script src="~/js/site.js" asp-append-version="true"></script>
+     <!-- Required to convert named colors to RGB -->
+    @*<script src="~/js/html2canvas.js" asp-append-version="true"></script>
+    <script src="~/js/screenshot.js" asp-append-version="true"></script>*@
+<html>
+<head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#05396b">
+    <meta name="theme-color" content="#05396b">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+          asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+          asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+    <link rel="stylesheet" href="~/css/overlay.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <script src="~/js/loadscreen.js" asp-append-version="true"></script>
+</head>
+<body>
+
+
+@RenderBody()
+
+<div class="overlay active">
+    <div class="overlay-content">
+
+        <img class="img-loading" style="" src="~/images/loadingbackground.svg" />
+        <img class="img-loading animate-flicker" style="" src="~/images/hexalogo.svg" />
+        <p>Loading...</p>
+    </div>
+
+</div>
+</body>
+
+
+@RenderSection("Scripts", required: false)
+</html>

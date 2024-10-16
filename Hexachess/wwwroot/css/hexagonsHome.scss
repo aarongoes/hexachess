@@ -1,0 +1,240 @@
+﻿$lightColor: #8DE4AF;
+$normalColor: #5CDB94;
+$darkColor: #389583;
+$pieceColorDark: rgba(5, 57, 107, 1);
+$pieceColorLight: rgba(237, 245, 224, 1);
+
+$hexSize: 30px;
+$hexWidth: $hexSize;
+$hexHeight: $hexSize / 2;
+
+$hexSizePortrait: 17px;
+$hexWidthPortrait: $hexSizePortrait;
+$hexHeightPortrait: $hexSizePortrait / 2;
+.animate-rotate {
+  transform: rotate(180deg);
+  transition: transform 1s ease-in-out !important;
+}
+
+.animate-rotate-hex {
+  transform: rotate(-180deg) !important;
+  transition: transform 1s ease-in-out !important;
+}
+
+.animate-rotate-reversed {
+  transform: rotate(0deg);
+  transition: transform 1s ease-in-out !important;
+}
+
+.animate-rotate-hex-reversed {
+  transform: rotate(0deg) !important;
+  transition: transform 1s ease-in-out !important;
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+.rotate-hex {
+  transform: rotate(-180deg) !important;
+}
+
+.rotate-reversed {
+  transform: rotate(0deg);
+}
+
+.rotate-hex-reversed {
+  transform: rotate(0deg) !important;
+}
+
+.landscape {
+
+  .hex-row {
+    width: $hexWidth;
+
+    .hex-base {
+      height: ($hexHeight + $hexHeight / 8) * 2;
+
+      .hex {
+        width: $hexWidth;
+        margin-top: $hexHeight + $hexHeight / 8;
+        margin-bottom: $hexHeight + $hexHeight / 8;
+
+        .background {
+          width: $hexWidth;
+          height: ($hexHeight + $hexHeight / 8) * 2;
+        }
+
+        .backgroundBackground {
+          width: ($hexWidth) + ($hexWidth / 8);
+        }
+
+        &:before, &:after {
+          border-bottom: $hexHeight solid transparent;
+          border-top: $hexHeight solid transparent;
+          border-left-width: $hexHeight / 2;
+          border-right-width: $hexHeight / 2;
+        }
+      }
+    }
+  }
+}
+
+.portrait {
+
+  .hex-row {
+    width: $hexWidthPortrait;
+
+    .hex-base {
+      height: ($hexHeightPortrait + $hexHeightPortrait / 8) * 2;      
+
+      .hex {
+        width: $hexWidthPortrait;
+        margin-top: $hexHeightPortrait + $hexHeightPortrait / 8;
+        margin-bottom: $hexHeightPortrait + $hexHeightPortrait / 8;
+
+        .background {          
+          width: $hexWidthPortrait;
+          height: ($hexHeightPortrait + $hexHeightPortrait / 8) * 2;
+        }
+
+        .backgroundBackground {
+          width: ($hexWidthPortrait) + ($hexWidthPortrait / 7);
+        }
+
+        &:before, &:after {
+          border-bottom: $hexHeightPortrait solid transparent;
+          border-top: $hexHeightPortrait solid transparent;
+          border-left-width: $hexHeightPortrait / 2;
+          border-right-width: $hexHeightPortrait / 2;
+        }
+      }
+    }
+  }
+}
+
+.cloneDom{
+  .hex-grid{
+    //margin-top: -20vh;
+  }
+}
+
+.hex-grid {
+  display: flex;
+  top: 110px;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.4s ease-in;
+  .hex-row {
+    height: 100%;
+    align-self: center;
+
+    .hex-base {
+
+
+      .hex {
+        height: 0px;
+        position: relative;
+        float: left;
+        display: flex;
+        justify-content: center;
+
+        .background {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          z-index: 999;
+          transform: translate(-50%, -50%);
+          background-size: cover;
+          -webkit-mask-repeat: no-repeat;
+          -webkit-mask-position: center;
+          -webkit-mask-size: contain;
+        }
+
+        .backgroundBackground {
+          border: 0.1vh solid;
+          border-radius: 50px;
+          position: absolute;
+          align-self: center;
+
+          &.backgroundBackground-light {
+            background-color: $lightColor;
+            border-color: $lightColor;
+          }
+
+          &.backgroundBackground-normal {
+            background-color: $normalColor;
+            border-color: $normalColor;
+          }
+
+          &.backgroundBackground-dark {
+            background-color: $darkColor;
+            border-color: $darkColor;
+          }
+        }
+
+        &:before, &:after {
+          height: 0px;
+          content: '';
+          position: absolute;
+          width: 116%;
+          border-left-style: solid;
+          border-left-color: transparent;
+          border-right-style: solid;
+          border-right-color: transparent;
+        }
+
+        &:before {
+          bottom: 0;
+        }
+
+        &:after {
+          top: 0;
+        }
+
+        &.light {
+          background: $lightColor;
+
+          &:before {
+            border-bottom-color: $lightColor;
+          }
+
+          &:after {
+            border-top-color: $lightColor;
+          }
+        }
+
+        &.normal {
+          background: $normalColor;
+
+          &:before {
+            border-bottom-color: $normalColor;
+          }
+
+          &:after {
+            border-top-color: $normalColor;
+          }
+        }
+
+        &.dark {
+          background: $darkColor;
+
+          &:before {
+            border-bottom-color: $darkColor;
+          }
+
+          &:after {
+            border-top-color: $darkColor;
+          }
+        }
+      }
+    }
+  }
+
+}
+
+.active{
+  opacity: 1;
+}

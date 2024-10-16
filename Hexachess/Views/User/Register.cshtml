@@ -1,0 +1,24 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model Hexachess.Models.RegisterViewModel
+@inject IViewLocalizer Localizer
+<form class="register" id="register" asp-action="Register" asp-route-returnUrl="@Context.Request.Query["ReturnUrl"]">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Username" class="control-label">@Localizer["Username"]</label>
+        <input asp-for="Username" class="form-control" type="text" autocomplete="username"/>
+        <span asp-validation-for="Username" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Password" class="control-label">@Localizer["Password"]</label>
+        <input asp-for="Password" class="form-control" type="password" autocomplete="new-password"/>
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PasswordRepeated" class="control-label">@Localizer["RepeatPassword"]</label>
+        <input asp-for="PasswordRepeated" class="form-control" type="password" autocomplete="new-password"/>
+        <span asp-validation-for="PasswordRepeated" class="text-danger"></span>
+    </div>
+    <div class="form-group form-button">
+        <input class="btn" type="submit" value="@Localizer["SignUp"]" class="btn btn-primary" />
+    </div>
+</form>

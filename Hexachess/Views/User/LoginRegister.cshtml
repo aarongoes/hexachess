@@ -1,0 +1,48 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model Hexachess.Models.ILoginRegister
+
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <link rel="stylesheet" href="~/css/loginRegister.css" />
+    <script src="~/js/loginRegister.js" asp-append-version="true"></script>
+    <link rel="stylesheet" href="~/css/game.css" asp-append-version="true" />
+</head>
+
+<div class="row modal-code align-center">
+    <div class="col-md-4 modal-content container">
+        <div class="modal-header">
+            <button class="btn login-register selected" id="btnSignIn">@Localizer["SignIn"]</button>
+            <button class="btn login-register" id="btnRegister">@Localizer["SignUp"]</button>
+        </div>
+        <div class="modal-body">
+            @if (Model != null)
+            {
+                if (Model.GetType() == typeof(LoginViewModel))
+                {
+                    @await Html.PartialAsync("Login")
+                    @await Html.PartialAsync("Register", null, null)
+                    <script>login = true;</script>
+                }
+                else if (Model.GetType() == typeof(RegisterViewModel))
+                {
+                    @await Html.PartialAsync("Login", null, null)
+                    @await Html.PartialAsync("Register")
+                    <script>register = true;</script>
+                }
+            }
+            else
+            {
+                @await Html.PartialAsync("Login")
+                @await Html.PartialAsync("Register")
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

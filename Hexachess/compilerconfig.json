@@ -1,0 +1,14 @@
+﻿[
+  {
+    "outputFile": "wwwroot/css/hexagons.css",
+    "inputFile": "wwwroot/css/hexagons.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/overlay.css",
+    "inputFile": "wwwroot/css/overlay.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/site.css",
+    "inputFile": "wwwroot/css/site.scss"
+  }
+]

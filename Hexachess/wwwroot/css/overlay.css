@@ -1,0 +1,117 @@
+@import url("https://fonts.googleapis.com/css?family=Dancing+Script");
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.4s ease-in;
+  user-select: none;
+}
+
+.overlay .overlay-content {
+  margin-top: 150px;
+  text-align: center;
+}
+
+.overlay .overlay-content p {
+  font-size: 50px;
+  font-family: "Dancing Script", cursive;
+}
+
+.overlay.active {
+  opacity: 1;
+  pointer-events: initial;
+}
+
+.img-loading {
+  top: 50vh;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  object-fit: cover;
+  height: 65vh;
+  object-position: 50% 50%;
+  width: 101%;
+  margin: 0px;
+}
+
+@keyframes flickerAnimation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-o-keyframes flickerAnimation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-moz-keyframes flickerAnimation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes flickerAnimation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.animate-flicker {
+  -webkit-animation: flickerAnimation 3s infinite;
+  -moz-animation: flickerAnimation 3s infinite;
+  -o-animation: flickerAnimation 3s infinite;
+  animation: flickerAnimation 3s infinite;
+}
+
+.back-button {
+  margin-top: 7.5px;
+  width: 90% !important;
+}
+
+h3, h4, h5, h6, p {
+  padding: 0;
+  word-break: break-word;
+}
+
+.sidebar-body {
+  overflow: auto;
+  position: relative;
+  width: 100%;
+}
+
+.modal {
+  padding-left: 0;
+}
+
+.test {
+  color: white;
+}
+
+/*# sourceMappingURL=overlay.css.map */

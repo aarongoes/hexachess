@@ -1,0 +1,37 @@
+image: microsoft/dotnet:latest
+
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+stages:
+  - Build
+  - Test
+  - Deployment
+
+build:
+  stage: Build
+  before_script:
+    - "dotnet restore"
+  script:
+    - "dotnet build Hexachess/Hexachess.csproj"
+    - "dotnet build Model/Model.csproj"
+    - "dotnet build Repository/Repository.csproj"
+    - "dotnet build DAL/DAL.csproj"
+    - "dotnet build Factory/Factory.csproj"
+    - "dotnet build Logic/Logic.csproj"
+.test:
+  stage: Test
+  before_script:
+    - "dotnet restore"
+  script:
+    - "dotnet test Tests"
+
+deploy_master:
+  image: appropriate/curl:latest
+  variables:
+    GIT_STRATEGY: none
+    GIT_SUBMODULE_STRATEGY: none
+  stage: Deployment
+  script:
+    - "curl --request POST --url redacted"
+  only:
+    - master

@@ -1,0 +1,134 @@
+﻿@model Hexachess.Models.UserViewModel
+
+<link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/hexagonsHome.css" asp-append-version="true" />
+
+@using System.Globalization
+@using System.Security.Claims
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Http.Internal
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@{
+    ViewData["Title"] = "HEXACHESS";
+}
+
+@inject IViewLocalizer Localizer
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="body-container wrapper" ondragstart="return false;" ondrop="return false;">
+        <nav class="sidebar" id="sidebar-left">
+            <div class="toggles" id="themelanguage">
+                <a class="languageSwitch">
+                    <img class="languageFlag" src="~/images/@CultureInfo.CurrentCulture@Html.Raw(".svg")">
+                    <span id="languageTitle">@Localizer["Language"]</span>
+                </a>
+                <a class="theme-toggle">
+                    <i class="fas fa-sun toggler"></i>
+                </a>
+            </div>
+            <div class="sidebar-header">
+                <img src="~/images/logo.svg" width="80" alt="logo" />
+                <h4>HEXACHESS</h4>
+            </div>
+            <div class="sidebar-content">
+                <p>@Localizer["Hello"], @User.Identity.Name!</p>
+                @if (Model.Name == User.Identity.Name)
+                {
+                    <p>@Localizer["HexachessHeadline"]</p>
+                }
+                @if (Model.Name != User.Identity.Name)
+                {
+                    <p>@Localizer["ViewUser"] @Model.Name's @Localizer["ViewGames"]</p>
+                }
+                <form method="post" asp-controller="User" asp-action="Logout">
+                    <button type="submit" class="btn btn-download sidebar-button back-button">@Localizer["SignOut"]</button>
+                </form>
+            </div>
+        </nav>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="new-game-dialog" tabindex="-1" role="dialog" aria-labelledby="NewGame" aria-hidden="true">
+            <div class="modal-dialog modal-code" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="icon-box">
+                            <i class="material-icons">games</i>
+                        </div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <h4>@Localizer["SelectGamemode"]</h4>
+                        <a href="/game/new/1">
+                            <div class="game-canvas landscape" id="game-canvas">
+                                <div class="img-box">
+                                    <img src="~/images/plusicon.svg"/>
+                                </div>
+                                <div class="game-textbox">
+                                    <p class="game-text text-2">@Localizer["Create"] @Localizer["GameMode1"] @Localizer["Game"]</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="/game/new/2">
+                            <div class="game-canvas landscape" id="game-canvas">
+                                <div class="img-box">
+                                    <img src="~/images/plusicon.svg"/>
+                                </div>
+                                <div class="game-textbox">
+                                    <p class="game-text text-2">@Localizer["Create"] @Localizer["GameMode2"] @Localizer["Game"]</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="/game/new/3">
+                            <div class="game-canvas landscape" id="game-canvas">
+                                <div class="img-box">
+                                    <img src="~/images/plusicon.svg"/>
+                                </div>
+                                <div class="game-textbox">
+                                    <p class="game-text text-2">@Localizer["Create"] @Localizer["GameMode3"] @Localizer["Game"]</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Hex -->
+        <div class="body-content body-container content">
+            <div class="game-list">
+                <div class="games">
+                    @foreach (var game in Model.Games)
+                    {
+                        <a href="/game/@game.Token">
+                            <div class="game-canvas landscape" id="game-canvas">
+                                @game.Thumbnail
+                                <div class="game-textbox">
+                                    <p class="game-text">@game.DateStart</p>
+                                    <p class="game-text">@Localizer["GameMode" + game.Mode]</p>
+                                </div>
+                            </div>
+                        </a>
+                    }
+                    @if (Model.Name == User.Identity.Name)
+                    {
+                        <a data-toggle="modal" data-target="#new-game-dialog" style="cursor: pointer;">
+                            <div class="game-canvas landscape" id="game-canvas">
+                                <div class="img-box">
+                                    <img src="~/images/plusicon.svg"/>
+                                </div>
+                                <div class="game-textbox">
+                                    <p class="game-text">@Localizer["Create"] @Localizer["New"] @Localizer["Game"]</p>
+                                </div>
+                            </div>
+                        </a>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="img-out"></div>
+    </div>
+}

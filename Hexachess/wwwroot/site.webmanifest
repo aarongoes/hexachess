@@ -1,0 +1,22 @@
+{
+    "name": "Hexachess",
+    "short_name": "Hexachess",
+	"start_url": "/",
+	"description": "Play hexagonal chess online!",
+    "icons": [
+        {
+            "src": "/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#03223F",
+    "background_color": "#03223F",
+    "display": "standalone",
+    "orientation": "landscape"
+}

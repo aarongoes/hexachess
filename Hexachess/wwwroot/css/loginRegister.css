@@ -1,0 +1,67 @@
+.container {
+  margin: auto;
+  float: none;
+}
+.container .login {
+  display: unset;
+}
+.container .register {
+  display: none;
+}
+
+.toggle .login {
+  display: none;
+}
+.toggle .register {
+  display: unset;
+}
+
+.align-center {
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  flex-align: center;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  flex-pack: center;
+}
+
+.row {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  height: 100%;
+}
+
+.login-register {
+  min-height: 70px !important;
+  width: 49.5%;
+  margin: 0 !important;
+  background: #EFCB5F !important;
+}
+
+.login-register:hover {
+  background: #EDD184 !important;
+}
+
+.modal-header {
+  padding: 0 !important;
+}
+
+.modal-body {
+  margin-bottom: -10px;
+}
+
+.form-button {
+  margin-bottom: 0;
+}
+
+.selected {
+  background: #EDD184 !important;
+}
+
+/*# sourceMappingURL=loginRegister.css.map */

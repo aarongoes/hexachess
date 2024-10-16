@@ -1,0 +1,120 @@
+@using System.Globalization
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@{
+    ViewData["Title"] = "HEXACHESS";
+}
+@inject IViewLocalizer Localizer
+
+<script src="~/lib/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/move.js"></script>
+<script src="~/js/game.js" asp-append-version="true"></script>
+<script src="~/js/hexagons.js" asp-append-version="true"></script>
+<script src="~/js/screenshot.js" asp-append-version="true"></script>
+<script src="~/js/html2canvas.js" asp-append-version="true"></script>
+<link rel="stylesheet" href="~/css/game.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/hexagonsGame.css" asp-append-version="true" />
+
+<script>
+    player1Turn = "@Localizer["player1Turn"]";
+    player2Turn = "@Localizer["player2Turn"]";
+    turnText = "@Localizer["turn"]";
+</script>
+
+@inject IHttpContextAccessor httpContextaccessor
+
+<div class="body-container wrapper" ondragstart="return false;" ondrop="return false;">
+    <nav class="sidebar" id="sidebar-left">
+        <div class="toggles">
+            <a class="languageSwitch">
+                <img class="languageFlag" src="~/images/@CultureInfo.CurrentCulture@Html.Raw(".svg")">
+                <span id="languageTitle">@Localizer["Language"]</span>
+            </a>
+            <a class="theme-toggle">
+                <i class="fas fa-sun toggler"></i>
+            </a>
+        </div>
+        <div class ="sidebar-body">
+            <div class="sidebar-header">
+                <img src="~/images/logo.svg" width="80" alt="logo" />
+                <h4>HEXACHESS</h4>
+            </div>
+            <div class="sidebar-content">
+                <p>@Localizer["PlayerInfo"]</p>
+                <div id="players">
+                </div>
+            </div>
+        </div>
+        <button id="btnback" type="button" class="btn btn-sidebar sidebar-button back-button">@Localizer["Leave"]</button>
+    </nav>
+
+    <!-- Modal -->
+    <div class="modal fade" id="invite-second-player-dialog" tabindex="-1" role="dialog" aria-labelledby="SecondPlayer" aria-hidden="true">
+        <div class="modal-dialog modal-code" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="icon-box">
+                        <i class="material-icons">person_add</i>
+                    </div>
+                </div>
+                <div class="modal-body text-center">
+                    <h4>@Localizer["Invite"]!</h4>
+                    
+                    <div class="input-group" style="margin: 25px;">
+                        <input type="text" id="share-url" class="form-control" aria-describedby="basic-addon2" readonly>
+                        <span class="input-group-addon copy-url">
+                            <i class="fas fa-copy"></i>
+                        </span>
+                    </div>
+                    <p>@Localizer["ShareLink"]</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="board-legend-dialog" tabindex="-1" role="dialog" aria-labelledby="BoardLegend" aria-hidden="true">
+        <div class="modal-dialog modal-code" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="icon-box">
+                        <i class="material-icons">info</i>
+                    </div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <h4>@Localizer["Legend"]</h4>
+                    
+                    <img src="~/images/legend.svg" style="margin-top: 10px; border-radius: 20px;width: 100%;" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hex -->
+    <div class="body-content body-container content">
+        <div class="game-canvas" id="clone-me">
+            <div class="hex-grid" id="game-canvas">
+            </div>
+        </div>
+    </div>
+    <div class="img-out"></div>
+    <div class="player-up-next">
+        <p class="next-player" id="nextplayer"></p>
+    </div>
+
+    <nav class="sidebar" id="sidebar-right">
+        <div class ="sidebar-body">
+            <div class="sidebar-header">
+                <h4>HEXACHESS</h4>
+                <img src="~/images/logo.svg" width="80" alt="logo"/>
+            </div>
+            <div class="sidebar-content" id="moves">
+                @await Html.PartialAsync("Moves")
+            </div>
+        </div>
+        <button type="button" class="btn sidebar-button back-button" data-toggle="modal" data-target="#board-legend-dialog">@Localizer["Legend"]</button>
+    </nav>
+</div>

@@ -1,0 +1,184 @@
+.animate-rotate {
+  transform: rotate(180deg);
+  transition: transform 1s ease-in-out !important;
+}
+
+.animate-rotate-hex {
+  transform: rotate(-180deg) !important;
+  transition: transform 1s ease-in-out !important;
+}
+
+.animate-rotate-reversed {
+  transform: rotate(0deg);
+  transition: transform 1s ease-in-out !important;
+}
+
+.animate-rotate-hex-reversed {
+  transform: rotate(0deg) !important;
+  transition: transform 1s ease-in-out !important;
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+.rotate-hex {
+  transform: rotate(-180deg) !important;
+}
+
+.rotate-reversed {
+  transform: rotate(0deg);
+}
+
+.rotate-hex-reversed {
+  transform: rotate(0deg) !important;
+}
+
+.landscape .hex-row {
+  width: 30px;
+}
+.landscape .hex-row .hex-base {
+  height: 33.75px;
+}
+.landscape .hex-row .hex-base .hex {
+  width: 30px;
+  margin-top: 16.875px;
+  margin-bottom: 16.875px;
+}
+.landscape .hex-row .hex-base .hex .background {
+  width: 30px;
+  height: 33.75px;
+}
+.landscape .hex-row .hex-base .hex .backgroundBackground {
+  width: 33.75px;
+}
+.landscape .hex-row .hex-base .hex:before, .landscape .hex-row .hex-base .hex:after {
+  border-bottom: 15px solid transparent;
+  border-top: 15px solid transparent;
+  border-left-width: 7.5px;
+  border-right-width: 7.5px;
+}
+
+.portrait .hex-row {
+  width: 17px;
+}
+.portrait .hex-row .hex-base {
+  height: 19.125px;
+}
+.portrait .hex-row .hex-base .hex {
+  width: 17px;
+  margin-top: 9.5625px;
+  margin-bottom: 9.5625px;
+}
+.portrait .hex-row .hex-base .hex .background {
+  width: 17px;
+  height: 19.125px;
+}
+.portrait .hex-row .hex-base .hex .backgroundBackground {
+  width: 19.4285714286px;
+}
+.portrait .hex-row .hex-base .hex:before, .portrait .hex-row .hex-base .hex:after {
+  border-bottom: 8.5px solid transparent;
+  border-top: 8.5px solid transparent;
+  border-left-width: 4.25px;
+  border-right-width: 4.25px;
+}
+
+.hex-grid {
+  display: flex;
+  top: 110px;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.4s ease-in;
+}
+.hex-grid .hex-row {
+  height: 100%;
+  align-self: center;
+}
+.hex-grid .hex-row .hex-base .hex {
+  height: 0px;
+  position: relative;
+  float: left;
+  display: flex;
+  justify-content: center;
+}
+.hex-grid .hex-row .hex-base .hex .background {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 999;
+  transform: translate(-50%, -50%);
+  background-size: cover;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+}
+.hex-grid .hex-row .hex-base .hex .backgroundBackground {
+  border: 0.1vh solid;
+  border-radius: 50px;
+  position: absolute;
+  align-self: center;
+}
+.hex-grid .hex-row .hex-base .hex .backgroundBackground.backgroundBackground-light {
+  background-color: #8DE4AF;
+  border-color: #8DE4AF;
+}
+.hex-grid .hex-row .hex-base .hex .backgroundBackground.backgroundBackground-normal {
+  background-color: #5CDB94;
+  border-color: #5CDB94;
+}
+.hex-grid .hex-row .hex-base .hex .backgroundBackground.backgroundBackground-dark {
+  background-color: #389583;
+  border-color: #389583;
+}
+.hex-grid .hex-row .hex-base .hex:before, .hex-grid .hex-row .hex-base .hex:after {
+  height: 0px;
+  content: "";
+  position: absolute;
+  width: 116%;
+  border-left-style: solid;
+  border-left-color: transparent;
+  border-right-style: solid;
+  border-right-color: transparent;
+}
+.hex-grid .hex-row .hex-base .hex:before {
+  bottom: 0;
+}
+.hex-grid .hex-row .hex-base .hex:after {
+  top: 0;
+}
+.hex-grid .hex-row .hex-base .hex.light {
+  background: #8DE4AF;
+}
+.hex-grid .hex-row .hex-base .hex.light:before {
+  border-bottom-color: #8DE4AF;
+}
+.hex-grid .hex-row .hex-base .hex.light:after {
+  border-top-color: #8DE4AF;
+}
+.hex-grid .hex-row .hex-base .hex.normal {
+  background: #5CDB94;
+}
+.hex-grid .hex-row .hex-base .hex.normal:before {
+  border-bottom-color: #5CDB94;
+}
+.hex-grid .hex-row .hex-base .hex.normal:after {
+  border-top-color: #5CDB94;
+}
+.hex-grid .hex-row .hex-base .hex.dark {
+  background: #389583;
+}
+.hex-grid .hex-row .hex-base .hex.dark:before {
+  border-bottom-color: #389583;
+}
+.hex-grid .hex-row .hex-base .hex.dark:after {
+  border-top-color: #389583;
+}
+
+.active {
+  opacity: 1;
+}
+
+/*# sourceMappingURL=hexagonsHome.css.map */

@@ -1,0 +1,24 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model Hexachess.Models.LoginViewModel
+
+@inject IViewLocalizer Localizer
+@if (Model != null)
+{
+    <script>hasFailed = true;</script>
+}
+<form class="login" id="login" asp-action="Login" asp-route-returnUrl="@Context.Request.Query["ReturnUrl"]">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Username" class="control-label">@Localizer["Username"]</label>
+        <input asp-for="Username" class="form-control" type="text" autocomplete="username"/>
+        <span asp-validation-for="Username" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Password" class="control-label">@Localizer["Password"]</label>
+        <input asp-for="Password" class="form-control" type="password" autocomplete="new-password"/>
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <div class="form-group form-button">
+        <input type="submit" class="btn" value="@Localizer["SignIn"]" class="btn btn-primary"/>
+    </div>
+</form>

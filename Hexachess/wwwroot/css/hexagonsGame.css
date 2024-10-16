@@ -1,0 +1,189 @@
+.animate-rotate {
+  transform: rotate(180deg);
+  transition: transform 1s ease-in-out !important;
+}
+
+.animate-rotate-hex {
+  transform: rotate(-180deg) !important;
+  transition: transform 1s ease-in-out !important;
+}
+
+.animate-rotate-reversed {
+  transform: rotate(0deg);
+  transition: transform 1s ease-in-out !important;
+}
+
+.animate-rotate-hex-reversed {
+  transform: rotate(0deg) !important;
+  transition: transform 1s ease-in-out !important;
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+.rotate-hex {
+  transform: rotate(-180deg) !important;
+}
+
+.rotate-reversed {
+  transform: rotate(0deg);
+}
+
+.rotate-hex-reversed {
+  transform: rotate(0deg) !important;
+}
+
+.landscape .hex-row {
+  width: 7vh;
+}
+.landscape .hex-row .hex-base {
+  height: 7.875vh;
+}
+.landscape .hex-row .hex-base .hex {
+  transition: transform 1s ease-in-out !important;
+  width: 7vh;
+  margin-top: 3.9375vh;
+  margin-bottom: 3.9375vh;
+}
+.landscape .hex-row .hex-base .hex .background {
+  width: 7vh;
+  height: 7.875vh;
+}
+.landscape .hex-row .hex-base .hex .backgroundBackground {
+  width: 7.875vh;
+}
+.landscape .hex-row .hex-base .hex:before, .landscape .hex-row .hex-base .hex:after {
+  border-bottom: 3.5vh solid transparent;
+  border-top: 3.5vh solid transparent;
+  border-left-width: 1.75vh;
+  border-right-width: 1.75vh;
+}
+
+.portrait .hex-row {
+  width: 4vw;
+}
+.portrait .hex-row .hex-base {
+  height: 4.5vw;
+  touch-action: none;
+}
+.portrait .hex-row .hex-base .hex {
+  width: 4vw;
+  margin-top: 2.25vw;
+  margin-bottom: 2.25vw;
+}
+.portrait .hex-row .hex-base .hex .background {
+  width: 4vw;
+  height: 4.5vw;
+}
+.portrait .hex-row .hex-base .hex .backgroundBackground {
+  width: 4.5714285714vw;
+}
+.portrait .hex-row .hex-base .hex:before, .portrait .hex-row .hex-base .hex:after {
+  border-bottom: 2vw solid transparent;
+  border-top: 2vw solid transparent;
+  border-left-width: 1vw;
+  border-right-width: 1vw;
+}
+
+.hex-grid {
+  display: flex;
+  top: 50vh;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.4s ease-in;
+}
+.hex-grid .hex-row {
+  height: 100%;
+  align-self: center;
+}
+.hex-grid .hex-row .hex-base .hex {
+  pointer-events: none;
+  height: 0px;
+  position: relative;
+  float: left;
+  display: flex;
+  justify-content: center;
+}
+.hex-grid .hex-row .hex-base .hex .background {
+  pointer-events: all;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 999;
+  transform: translate(-50%, -50%);
+  background-size: cover;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+}
+.hex-grid .hex-row .hex-base .hex .backgroundBackground {
+  border: 0.1vh solid;
+  border-radius: 50px;
+  pointer-events: none;
+  position: absolute;
+  align-self: center;
+}
+.hex-grid .hex-row .hex-base .hex .backgroundBackground.backgroundBackground-light {
+  background-color: #8DE4AF;
+  border-color: #8DE4AF;
+}
+.hex-grid .hex-row .hex-base .hex .backgroundBackground.backgroundBackground-normal {
+  background-color: #5CDB94;
+  border-color: #5CDB94;
+}
+.hex-grid .hex-row .hex-base .hex .backgroundBackground.backgroundBackground-dark {
+  background-color: #389583;
+  border-color: #389583;
+}
+.hex-grid .hex-row .hex-base .hex:before, .hex-grid .hex-row .hex-base .hex:after {
+  height: 0px;
+  content: "";
+  position: absolute;
+  width: 116%;
+  border-left-style: solid;
+  border-left-color: transparent;
+  border-right-style: solid;
+  border-right-color: transparent;
+}
+.hex-grid .hex-row .hex-base .hex:before {
+  bottom: 0;
+}
+.hex-grid .hex-row .hex-base .hex:after {
+  top: 0;
+}
+.hex-grid .hex-row .hex-base .hex.light {
+  background: #8DE4AF;
+}
+.hex-grid .hex-row .hex-base .hex.light:before {
+  border-bottom-color: #8DE4AF;
+}
+.hex-grid .hex-row .hex-base .hex.light:after {
+  border-top-color: #8DE4AF;
+}
+.hex-grid .hex-row .hex-base .hex.normal {
+  background: #5CDB94;
+}
+.hex-grid .hex-row .hex-base .hex.normal:before {
+  border-bottom-color: #5CDB94;
+}
+.hex-grid .hex-row .hex-base .hex.normal:after {
+  border-top-color: #5CDB94;
+}
+.hex-grid .hex-row .hex-base .hex.dark {
+  background: #389583;
+}
+.hex-grid .hex-row .hex-base .hex.dark:before {
+  border-bottom-color: #389583;
+}
+.hex-grid .hex-row .hex-base .hex.dark:after {
+  border-top-color: #389583;
+}
+
+.active {
+  opacity: 1;
+}
+
+/*# sourceMappingURL=hexagonsGame.css.map */
